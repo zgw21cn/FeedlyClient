@@ -6,6 +6,7 @@ A client for Feedly.[feedly api](http://developer.feedly.com/)
 # Usage
 ## Auth
 At first, you can go to [feedly developer](http://developer.feedly.com/v3/sandbox/) to apply for a client id and client secret. Then you can go to feedly to obtain a code.
+
 	FEEDLY_REDIRECT_URI = "http://fabreadly.com/auth_callback"
 	FEEDLY_CLIENT_ID="client_id"
 	FEEDLY_CLIENT_SECRET="client_secret"
@@ -25,6 +26,7 @@ At first, you can go to [feedly developer](http://developer.feedly.com/v3/sandbo
 		return redirect(code_url)
 
 After getting a code, you may exchange it for an access token and a refresh token.
+
 	def callback(request):
 		code=request.GET.get('code','')
 		if not code:
