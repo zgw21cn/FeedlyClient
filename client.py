@@ -87,6 +87,19 @@ class FeedlyClient(object):
                       )
         res = requests.post(url=quest_url, data=json.dumps(params), headers=headers)
         return res
+    
+    def save_for_later(self, access_token, user_id, entryIds):
+        '''saved for later.entryIds is a list for entry id.'''
+        headers = {'content-type': 'application/json',
+                   'Authorization': 'OAuth ' + access_token
+        }
+        request_url = self._get_endpoint('v3/tags') + '/user%2F' + user_id + '%2Ftag%2Fglobal.saved'
+        
+        params = dict(
+                      entryIds=entryIds
+                      )
+        res = requests.put(url=request_url, data=json.dumps(params), headers=headers)
+        return res  	
 
     def _get_endpoint(self, path=None):
         url = "https://%s" % (self.service_host)
